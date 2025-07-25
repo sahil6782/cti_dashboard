@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CTI Dashboard</title>
+</head>
+<body>
+    <h2>Cyber Threat Intelligence Dashboard</h2>
+    <form method="POST" action="/lookup">
+        <input type="text" name="ioc" placeholder="Enter IP/domain" required>
+        <button type="submit">Lookup</button>
+    </form>
+    <h3>Recent IOCs</h3>
+    <table border="1">
+        <tr><th>IOC</th><th>Date</th></tr>
+        {% for ioc in iocs %}
+        <tr>
+            <td>{{ ioc.ioc }}</td>
+            <td>{{ ioc.date.strftime('%Y-%m-%d') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
